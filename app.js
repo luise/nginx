@@ -1,3 +1,7 @@
+const fs = require('fs');
+const path = require('path');
+const {Service, Container, publicInternet} = require('@quilt/quilt');
+
 var image = "nginx:1.10"
 
 exports.New = function(port) {
@@ -18,7 +22,7 @@ exports.New = function(port) {
 }
 
 function buildConfig(port) {
-    var template = read("./default.tmpl");
+    var template = fs.readFileSync(path.join(__dirname, "default.tmpl"), {encoding: 'utf8'});
     return applyTemplate(template, {"port": port});
 }
 
