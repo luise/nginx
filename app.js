@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const {Service, Container, publicInternet} = require('@quilt/quilt');
@@ -29,7 +31,7 @@ function buildConfig(port) {
 // applyTemplate replaces the keys defined by `vars` with their corresponding
 // values in `template`. A variable is denoted in the template using {{key}}.
 function applyTemplate(template, vars) {
-    for (k in vars) {
+    for (var k in vars) {
         template = template.replace("{{"+k+"}}", vars[k]);
     }
     return template;

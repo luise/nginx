@@ -1,3 +1,5 @@
+'use strict';
+
 const {createDeployment, Machine, githubKeys} = require('@quilt/quilt');
 var app = require('./app');
 
