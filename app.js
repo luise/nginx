@@ -5,6 +5,9 @@ const path = require('path');
 const {Container, Service, publicInternet} = require('@quilt/quilt');
 
 const image = 'nginx:1.10';
+// Directory where the website HTML files will be stored.
+const siteSourceDirectory = '/site/';
+const indexFilename = 'index.html';
 
 /**
  * Creates and configures one container that runs nginx.
@@ -21,14 +24,22 @@ exports.createService = function(port) {
 
   const nginxConfTemplate = fs.readFileSync(
       path.join(__dirname, 'nginx_defaults.conf.tmpl'), {encoding: 'utf8'});
-  const nginxConf = applyTemplate(nginxConfTemplate, {'port': port});
+  const nginxConf = applyTemplate(nginxConfTemplate, {
+    'port': port,
+    'source_dir': siteSourceDirectory,
+    'index_filename': indexFilename
+  });
+
+  const indexFileData = fs.readFileSync(
+      path.join(__dirname, indexFilename), {encoding: 'utf8'});
+
+  let files = { '/etc/nginx/conf.d/default.conf': nginxConf };
+  files[path.join(siteSourceDirectory, indexFilename)] = indexFileData;
 
   // Create a Nginx Docker container, encapsulating it within the service
   // "web_tier".
   const webTier = new Service('web_tier', [
-    new Container(image).withFiles({
-      '/etc/nginx/conf.d/default.conf': nginxConf,
-    }),
+    new Container(image).withFiles(files),
   ]);
   webTier.allowFrom(publicInternet, port);
 

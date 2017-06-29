@@ -3,8 +3,8 @@ server {
     server_name  localhost;
 
     location / {
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
+        root   {{source_dir}};
+        index  {{index_filename}};
     }
 
     # redirect server error pages to the static page /50x.html
