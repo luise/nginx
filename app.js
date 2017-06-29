@@ -20,7 +20,7 @@ exports.createService = function(port) {
   }
 
   const nginxConfTemplate = fs.readFileSync(
-      path.join(__dirname, 'default.tmpl'), {encoding: 'utf8'});
+      path.join(__dirname, 'nginx_defaults.conf.tmpl'), {encoding: 'utf8'});
   const nginxConf = applyTemplate(nginxConfTemplate, {'port': port});
 
   // Create a Nginx Docker container, encapsulating it within the service
