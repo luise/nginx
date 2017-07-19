@@ -30,7 +30,7 @@ exports.createService = function(port) {
       '/etc/nginx/conf.d/default.conf': nginxConf,
     }),
   ]);
-  publicInternet.connect(port, webTier);
+  webTier.allowFrom(publicInternet, port);
 
   return webTier;
 };
