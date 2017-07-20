@@ -13,7 +13,7 @@ if (!fs.existsSync(publicKeyFile)) {
 }
 const sshPublicKey = fs.readFileSync(publicKeyFile, 'utf8');
 
-const deployment = createDeployment({});
+const deployment = createDeployment();
 
 // Setup the infrastructure.
 const baseMachine = new Machine({
