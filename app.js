@@ -16,8 +16,7 @@ const indexFilename = 'index.html';
  *     80 if not specified.
  * @return {Service} A service that wraps the container running nginx.
  */
-exports.createService = function(port) {
-  port = port || 80;
+exports.createService = function(port = 80) {
   if (typeof port !== 'number') {
     throw new Error('port must be a number');
   }
