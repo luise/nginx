@@ -30,4 +30,4 @@ if (fs.existsSync(publicKeyFile)) {
 deployment.deploy(baseMachine.asMaster());
 deployment.deploy(baseMachine.asWorker().replicate(1));
 
-deployment.deploy(app.createService());
+deployment.deploy(app.createContainer());

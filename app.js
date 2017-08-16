@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { Container, Service, publicInternet } = require('@quilt/quilt');
+const { Container, publicInternet } = require('@quilt/quilt');
 
 const image = 'nginx:1.10';
 // Directory where the website HTML files will be stored.
@@ -31,9 +31,9 @@ function applyTemplate(templateArg, vars) {
  *
  * @param {number} port The port that nginx should listen on. Defaults to
  *     80 if not specified.
- * @return {Service} A service that wraps the container running nginx.
+ * @return {Container} A container running nginx.
  */
-exports.createService = function createService(port = 80) {
+exports.createContainer = function createContainer(port = 80) {
   if (typeof port !== 'number') {
     throw new Error('port must be a number');
   }
@@ -52,11 +52,10 @@ exports.createService = function createService(port = 80) {
   const files = { '/etc/nginx/conf.d/default.conf': nginxConf };
   files[path.join(siteSourceDirectory, indexFilename)] = indexFileData;
 
-  // Create a Nginx Docker container, encapsulating it within the service
-  // "web_tier".
-  const webTier = new Service('web_tier', [
-    new Container(image).withFiles(files),
-  ]);
+  // Create a Nginx Docker container.
+  const webTier = new Container('web_tier', image, {
+    filepathToContent: files,
+  });
   webTier.allowFrom(publicInternet, port);
 
   return webTier;
