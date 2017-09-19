@@ -12,7 +12,7 @@ before_script:
 
 script:
     - gulp lint
-    - ./quilt inspect ./main.js graphviz
+    - ./quilt inspect ./main_machines.js graphviz
 
 notifications:
     slack:

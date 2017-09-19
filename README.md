@@ -1,12 +1,18 @@
 # Nginx for Quilt.js
 
 This repository implements an Nginx specification for Quilt.js.
-The blueprint, in `main.js`, will launch 2 Amazon AWS instances
-that run in the free tier, which means that running the spec will
-be free as long as the user hasn't exceeded AWS's
-[free tier allowance](https://aws.amazon.com/free/). One of the
-instances will be used as the Quilt master, and the other one
-will serve `index.html` on the public internet.
+The blueprint in `main.js` will launch an Nginx application on the user's
+`default` infrastructure. Such an infrastructure can be created with the
+`quilt init` command.
 
+The `main_machines.js` blueprint launches the same Nginx app, but specifies
+the infrastructure directly in the blueprint with the Quilt API.
+It is therefore possible to run this blueprint without running `quilt init`.
+
+## Tutorial
+For more details about how to get Nginx up and running with Quilt, check
+out [the tutorial](http://docs.quilt.io/#getting-started).
+
+## More Info
 For information about how to run this blueprint with Quilt, see
 [the Quilt documentation](http://docs.quilt.io).
