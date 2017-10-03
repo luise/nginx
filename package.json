@@ -1,7 +1,7 @@
 {
   "name": "@quilt/nginx",
   "version": "0.0.2",
-  "main": "./app.js",
+  "main": "./nginx.js",
   "license": "MIT",
   "dependencies": {
     "@quilt/quilt": "quilt/quilt"

@@ -1,4 +1,4 @@
-const app = require('./app');
+const nginx = require('./nginx');
 const fs = require('fs');
 const path = require('path');
 const { Machine, createDeployment } = require('@quilt/quilt');
@@ -30,4 +30,4 @@ if (fs.existsSync(publicKeyFile)) {
 deployment.deploy(baseMachine.asMaster());
 deployment.deploy(baseMachine.asWorker().replicate(1));
 
-deployment.deploy(app.createContainer());
+deployment.deploy(nginx.createContainer());

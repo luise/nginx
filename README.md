@@ -1,12 +1,12 @@
 # Nginx for Quilt.js
 
 This repository implements an Nginx specification for Quilt.js.
-The blueprint in `main.js` will launch an Nginx application on the user's
-`default` infrastructure. Such an infrastructure can be created with the
+The blueprint in `nginxExample.js` will launch an Nginx application on the
+user's `default` infrastructure. Such an infrastructure can be created with the
 `quilt init` command.
 
-The `main_machines.js` blueprint launches the same Nginx app, but specifies
-the infrastructure directly in the blueprint with the Quilt API.
+The `nginxExampleWithInfra.js` blueprint launches the same Nginx app, but
+specifies the infrastructure directly in the blueprint with the Quilt API.
 It is therefore possible to run this blueprint without running `quilt init`.
 
 ## Tutorial
