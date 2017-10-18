@@ -1,5 +1,5 @@
 const nginx = require('./nginx');
-const { baseInfrastructure } = require('@quilt/quilt');
+const { baseInfrastructure } = require('kelda');
 
 // This will default to using the infrastructure called `default`.
 const inf = baseInfrastructure();

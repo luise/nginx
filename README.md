@@ -1,18 +1,18 @@
-# Nginx for Quilt.js
+# Nginx for Kelda.js
 
-This repository implements an Nginx specification for Quilt.js.
+This repository implements an Nginx specification for Kelda.js.
 The blueprint in `nginxExample.js` will launch an Nginx application on the
 user's `default` infrastructure. Such an infrastructure can be created with the
-`quilt init` command.
+`kelda init` command.
 
 The `nginxExampleWithInfra.js` blueprint launches the same Nginx app, but
-specifies the infrastructure directly in the blueprint with the Quilt API.
-It is therefore possible to run this blueprint without running `quilt init`.
+specifies the infrastructure directly in the blueprint with the Kelda API.
+It is therefore possible to run this blueprint without running `kelda init`.
 
 ## Tutorial
-For more details about how to get Nginx up and running with Quilt, check
-out [the tutorial](http://docs.quilt.io/#getting-started).
+For more details about how to get Nginx up and running with Kelda, check
+out [the tutorial](http://docs.kelda.io/#getting-started).
 
 ## More Info
-For information about how to run this blueprint with Quilt, see
-[the Quilt documentation](http://docs.quilt.io).
+For information about how to run this blueprint with Kelda, see
+[the Kelda documentation](http://docs.kelda.io).

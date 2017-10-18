@@ -1,7 +1,7 @@
 const nginx = require('./nginx');
 const fs = require('fs');
 const path = require('path');
-const { Machine, createDeployment } = require('@quilt/quilt');
+const { Machine, createDeployment } = require('kelda');
 
 const deployment = createDeployment();
 

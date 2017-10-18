@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { Container, publicInternet } = require('@quilt/quilt');
+const { Container, publicInternet } = require('kelda');
 
 const image = 'nginx:1.10';
 // Directory where the website HTML files will be stored.
