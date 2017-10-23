@@ -1,6 +1,4 @@
 const nginx = require('./nginx');
-const fs = require('fs');
-const path = require('path');
 const { Machine, createDeployment } = require('kelda');
 
 const deployment = createDeployment();
@@ -13,18 +11,6 @@ const baseMachine = new Machine({
   // instances aren't available as spot instances.
   preemptible: false,
 });
-
-// Try to get a SSH public key to use by looking for one in ~/.ssh/id_rsa.pub.
-const publicKeyFile = path.join(process.env.HOME, '.ssh/id_rsa.pub');
-if (fs.existsSync(publicKeyFile)) {
-  const sshPublicKey = fs.readFileSync(publicKeyFile, 'utf8');
-  baseMachine.sshKeys.push(sshPublicKey);
-} else {
-  console.warn(`No SSH public key found in ${publicKeyFile}. ` +
-        'Machines will still be launched, but will not allow SSH acesss. ' +
-        'If you\'d like to enable SSH access, use the ssh-keygen command to ' +
-        'generate a public SSH key and then re-run this blueprint.');
-}
 
 // Create Master and Worker Machines.
 deployment.deploy(baseMachine.asMaster());
