@@ -1,7 +1,5 @@
 const nginx = require('./nginx');
-const { Machine, createDeployment } = require('kelda');
-
-const deployment = createDeployment();
+const { Infrastructure, Machine } = require('kelda');
 
 // Setup the infrastructure.
 const baseMachine = new Machine({
@@ -13,7 +11,6 @@ const baseMachine = new Machine({
 });
 
 // Create Master and Worker Machines.
-deployment.deploy(baseMachine.asMaster());
-deployment.deploy(baseMachine.asWorker().replicate(1));
+const infra = new Infrastructure(baseMachine, baseMachine);
 
-nginx.createContainer().deploy(deployment);
+nginx.createContainer().deploy(infra);
