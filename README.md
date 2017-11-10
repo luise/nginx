@@ -9,10 +9,6 @@ The `nginxExampleWithInfra.js` blueprint launches the same Nginx app, but
 specifies the infrastructure directly in the blueprint with the Kelda API.
 It is therefore possible to run this blueprint without running `kelda init`.
 
-## Tutorial
-For more details about how to get Nginx up and running with Kelda, check
-out [the tutorial](http://docs.kelda.io/#getting-started).
-
 ## More Info
 For information about how to run this blueprint with Kelda, see
 [the Kelda documentation](http://docs.kelda.io).
