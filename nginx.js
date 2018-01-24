@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { Container, publicInternet } = require('kelda');
+const { Container, publicInternet, allowTraffic } = require('kelda');
 
 const image = 'nginx:1.10';
 // Directory where the website HTML files will be stored.
@@ -56,7 +56,7 @@ exports.createContainer = function createContainer(port = 80) {
   const webTier = new Container('web_tier', image, {
     filepathToContent: files,
   });
-  webTier.allowFrom(publicInternet, port);
+  allowTraffic(publicInternet, webTier, port);
 
   return webTier;
 };
