@@ -53,7 +53,9 @@ exports.createContainer = function createContainer(port = 80) {
   files[path.join(siteSourceDirectory, indexFilename)] = indexFileData;
 
   // Create a Nginx Docker container.
-  const webTier = new Container('web-tier', image, {
+  const webTier = new Container({
+    name: 'web-tier',
+    image,
     filepathToContent: files,
   });
   allowTraffic(publicInternet, webTier, port);

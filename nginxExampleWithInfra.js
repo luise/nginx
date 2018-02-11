@@ -11,6 +11,9 @@ const baseMachine = new Machine({
 });
 
 // Create Master and Worker Machines.
-const infra = new Infrastructure(baseMachine, baseMachine);
+const infra = new Infrastructure({
+  masters: baseMachine,
+  workers: baseMachine,
+});
 
 nginx.createContainer().deploy(infra);
